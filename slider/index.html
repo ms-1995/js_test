@@ -41,21 +41,63 @@
 			}
 			slider_li[0].style.left = '0%';
 			let count = 3;
-			setInterval(
-				function(){
-					count++;
-					let left = 0;
-					let a = setInterval(
-						function(){
-							left = left+1;
-							slider_li[count%4].style.left = left+'%';
-							slider_li[(count+1)%4].style.left = (left-x)+'%';
-							if(left === 100){
-								slider_li[(count)%4].style.left = -x+'%';
-								clearInterval(a);
-							}
-						},5);
-				},slider_time);
+			setTimeout(timeout,slider_time);
+			function timeout(){
+				count++;
+				let left = 0;
+				console.log("轮播开始");
+				setTimeout(b,1);
+				function b() {
+					slider_li[(count+1)%4].style.left = x+'%';
+					left = left+1;
+					slider_li[count%4].style.left = -left+'%';
+					slider_li[(count+1)%4].style.left = (x-left)+'%';
+					if(left === 100){
+						clearTimeout(b);
+						console.log("轮播结束");
+						return false;
+					}
+					clearTimeout(b);
+					setTimeout(b,1);
+				}
+				clearTimeout(timeout);
+				setTimeout(timeout,slider_time);
+			}
+			// setInterval(function(){
+			// 	count++;
+			// 	let left = 0;
+			// 	// let a = setInterval(
+			// 	// 	function(){
+			// 	// 		left = left+1;
+			// 	// 		slider_li[count%4].style.left = left+'%';
+			// 	// 		slider_li[(count+1)%4].style.left = (left-x)+'%';
+			// 	// 		if(left === 100){
+			// 	// 			slider_li[(count)%4].style.left = -x+'%';
+			// 	// 			clearInterval(a);
+			// 	// 		}
+			// 	// 	},5);
+				// setTimeout(b,5);
+				// function b() {
+				// 	slider_li[(count+1)%4].style.left = x+'%';
+				// 	left = left+1;
+				// 	slider_li[count%4].style.left = -left+'%';
+				// 	slider_li[(count+1)%4].style.left = (x-left)+'%';
+				// 	if(left === 100){
+				// 		clearTimeout(b);
+				// 	}
+				// 	setTimeout(b,5);
+				// }
+			// 	// let b = setInterval(
+			// 	// 	function(){
+			// 	// 		slider_li[(count+1)%4].style.left = x+'%';
+			// 	// 		left = left+1;
+			// 	// 		slider_li[count%4].style.left = -left+'%';
+			// 	// 		slider_li[(count+1)%4].style.left = (x-left)+'%';
+			// 	// 		if(left === 100){
+			// 	// 			clearInterval(b);
+			// 	// 		}
+			// 	// 	},5);
+			// },slider_time);
 		}
 	</script>
 </head>
