@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style/reset.css">
 	<style>
 		#slider {
+			margin: 0 auto;
 			overflow: hidden;
 		}
 		#slider ul {
@@ -14,6 +15,7 @@
 		#slider ul li {
 			position: absolute;
 			float: left;
+			width: 100%;
 			height: 100%;
 		}
 		#slider ul li img {
@@ -23,20 +25,37 @@
 	</style>
 	<script>
 		window.onload = function(){
-			let width = 1400;
-			let height = 686;
+			let width = 600;
+			let height = 300;
+			let slider_time = 5000;
+			let x = 100;
 			let slider = document.getElementById('slider');
 			let slider_list = slider.getElementsByTagName('ul')[0];
 			let slider_li = slider_list.getElementsByTagName('li');
 			slider.style.width = width+'px';
-			slider_list.style.width = width*4+'px';
+			slider_list.style.width = width+'px';
 			slider_list.style.height = height+'px';
 			for(var value of slider_li) {
 				value.style.width = width+'px';
-				value.style.left = '-100%';
-				console.log(value.innerHTML);
+				value.style.left = -x+'%';
 			}
-			slider_li[1].style.left = '0';
+			slider_li[0].style.left = '0%';
+			let count = 3;
+			setInterval(
+				function(){
+					count++;
+					let left = 0;
+					let a = setInterval(
+						function(){
+							left = left+1;
+							slider_li[count%4].style.left = left+'%';
+							slider_li[(count+1)%4].style.left = (left-x)+'%';
+							if(left === 100){
+								slider_li[(count)%4].style.left = -x+'%';
+								clearInterval(a);
+							}
+						},5);
+				},slider_time);
 		}
 	</script>
 </head>
