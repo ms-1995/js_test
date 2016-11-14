@@ -11,6 +11,7 @@
 		}
 		#slider ul {
 			position: relative;
+			overflow: hidden;
 		}
 		#slider ul li {
 			position: absolute;
@@ -24,80 +25,63 @@
 		}
 	</style>
 	<script>
+		'use strict'
 		window.onload = function(){
-			let width = 600;
-			let height = 300;
-			let slider_time = 5000;
-			let x = 100;
-			let slider = document.getElementById('slider');
-			let slider_list = slider.getElementsByTagName('ul')[0];
-			let slider_li = slider_list.getElementsByTagName('li');
+			var width = 600;
+			var height = 300;
+			var slider_time = 5000;
+			var x = 100;
+			var slider = document.getElementById('slider');
+			var slider_list = slider.getElementsByTagName('ul')[0];
+			var slider_li = slider_list.getElementsByTagName('li');
 			slider.style.width = width+'px';
 			slider_list.style.width = width+'px';
 			slider_list.style.height = height+'px';
-			for(var value of slider_li) {
-				value.style.width = width+'px';
-				value.style.left = -x+'%';
+			console.log(slider_li.length);
+			for(var i=0;i<slider_li.length;i++) {
+				slider_li[i].style.width = width+'px';
+				slider_li[i].style.left = -x+'%';
 			}
 			slider_li[0].style.left = '0%';
-			let count = 3;
+			var count = 3;
 			setTimeout(timeout,slider_time);
 			function timeout(){
 				count++;
-				let left = 0;
-				console.log("轮播开始");
+				var left = 0;
+				slider_a(left,count);
+				clearTimeout(timeout);
+				setTimeout(timeout,slider_time);
+			}
+			function slider_a(left,count){
+				setTimeout(a,1);
+				function a() {
+					left += 1;
+					slider_li[count%4].style.left = left+'%';
+					slider_li[(count+1)%4].style.left = (left-x)+'%';
+					if(left === 100){
+						slider_li[(count)%4].style.left = -x+'%';
+						clearTimeout(a);
+						return false;
+					}
+					clearTimeout(a);
+					setTimeout(a,1);
+				}
+			}
+			function slider_b(left,count){
 				setTimeout(b,1);
 				function b() {
 					slider_li[(count+1)%4].style.left = x+'%';
-					left = left+1;
+					left += 1;
 					slider_li[count%4].style.left = -left+'%';
 					slider_li[(count+1)%4].style.left = (x-left)+'%';
 					if(left === 100){
 						clearTimeout(b);
-						console.log("轮播结束");
 						return false;
 					}
 					clearTimeout(b);
 					setTimeout(b,1);
 				}
-				clearTimeout(timeout);
-				setTimeout(timeout,slider_time);
 			}
-			// setInterval(function(){
-			// 	count++;
-			// 	let left = 0;
-			// 	// let a = setInterval(
-			// 	// 	function(){
-			// 	// 		left = left+1;
-			// 	// 		slider_li[count%4].style.left = left+'%';
-			// 	// 		slider_li[(count+1)%4].style.left = (left-x)+'%';
-			// 	// 		if(left === 100){
-			// 	// 			slider_li[(count)%4].style.left = -x+'%';
-			// 	// 			clearInterval(a);
-			// 	// 		}
-			// 	// 	},5);
-				// setTimeout(b,5);
-				// function b() {
-				// 	slider_li[(count+1)%4].style.left = x+'%';
-				// 	left = left+1;
-				// 	slider_li[count%4].style.left = -left+'%';
-				// 	slider_li[(count+1)%4].style.left = (x-left)+'%';
-				// 	if(left === 100){
-				// 		clearTimeout(b);
-				// 	}
-				// 	setTimeout(b,5);
-				// }
-			// 	// let b = setInterval(
-			// 	// 	function(){
-			// 	// 		slider_li[(count+1)%4].style.left = x+'%';
-			// 	// 		left = left+1;
-			// 	// 		slider_li[count%4].style.left = -left+'%';
-			// 	// 		slider_li[(count+1)%4].style.left = (x-left)+'%';
-			// 	// 		if(left === 100){
-			// 	// 			clearInterval(b);
-			// 	// 		}
-			// 	// 	},5);
-			// },slider_time);
 		}
 	</script>
 </head>
