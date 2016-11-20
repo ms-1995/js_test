@@ -4,7 +4,6 @@ function slider(id,width,height,time){
 	const SLIDER_TIME = time || 2000;
 	const SLIDER_X = 100;
 	const SLIDER_ID = id;
-	console.log(SLIDER_ID);
 	let slider = document.querySelector(SLIDER_ID);
 	let slider_list = slider.querySelector('ul');
 	let slider_li = slider_list.querySelectorAll('li');
@@ -20,31 +19,54 @@ function slider(id,width,height,time){
 		slider_li[i].style.left = -SLIDER_X+'%';
 	}
 	slider_li[count].style.left = '0%';
-	let h = setInterval(next, SLIDER_TIME);
+	let timer = setInterval(next, SLIDER_TIME);
 	function next(){
 		count += 1;
 		let i = count<0?(length-Math.abs(count)%length)%length:count%length;
 		let i_next = (i + 1)%length;
 		let i_prev = (length + i - 1)%length;
-		slider_li[i].style.left = '0%';
-		slider_li[i_prev].style.left = -SLIDER_X+'%';
+		// slider_li[i].style.left = '0%';
+		// slider_li[i_prev].style.left = -SLIDER_X+'%';
+		/**/
+		let left = 0;
+		let t = setInterval(function(){
+			left += 5;
+			slider_li[i_prev].style.left = left+'%';
+			slider_li[i].style.left = (left-SLIDER_X)+'%';
+			if(left === 100){
+				slider_li[i_prev].style.left = -SLIDER_X+'%';
+				clearInterval(t);
+			}
+		},10);
+		/**/
 	}
 	function prev(){
 		count -= 1;
 		let i = count<0?(length-Math.abs(count)%length)%length:count%length;
 		let i_next = (i + 1)%length;
 		let i_prev = (length + i - 1)%length;
-		slider_li[i].style.left = '0%';
-		slider_li[i_next].style.left = -SLIDER_X+'%';
+		// slider_li[i].style.left = '0%';
+		// slider_li[i_next].style.left = -SLIDER_X+'%';
+		/**/
+		let left = 0;
+		let t = setInterval(function(){
+			left += 5;
+			slider_li[i].style.left = (SLIDER_X-left)+'%';
+			slider_li[i_next].style.left = -left+'%';
+			if(left === 100){
+				clearInterval(t);
+			}
+		},10);
+		/**/
 	}
 	nextpage.onclick = function(){
 		next();
-		clearInterval(h);
-		h = setInterval(next, SLIDER_TIME);
+		clearInterval(timer);
+		timer = setInterval(next, SLIDER_TIME);
 	}
 	prevpage.onclick = function(){
 		prev();
-		clearInterval(h);
-		h = setInterval(next, SLIDER_TIME);
+		clearInterval(timer);
+		timer = setInterval(next, SLIDER_TIME);
 	}
 }
