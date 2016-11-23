@@ -2,97 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>轮播图</title>
-	<link rel="stylesheet" href="style/reset.css">
+	<title>Document</title>
+	<link rel="stylesheet" href="../common/css/reset.css">
 	<style>
-		#slider {
+		.slider {
 			margin: 0 auto;
-			overflow: hidden;
 		}
-		#slider ul {
+		.slider ul {
 			position: relative;
 			overflow: hidden;
 		}
-		#slider ul li {
+		.slider ul li {
 			position: absolute;
 			float: left;
 			width: 100%;
 			height: 100%;
 		}
-		#slider ul li img {
+		.slider ul li img {
 			width: 100%;
 			height: 100%;
 		}
 	</style>
 	<script>
-		'use strict'
 		window.onload = function(){
-			var width = 600;
-			var height = 300;
-			var slider_time = 5000;
-			var x = 100;
-			var slider = document.getElementById('slider');
-			var slider_list = slider.getElementsByTagName('ul')[0];
-			var slider_li = slider_list.getElementsByTagName('li');
-			slider.style.width = width+'px';
-			slider_list.style.width = width+'px';
-			slider_list.style.height = height+'px';
-			console.log(slider_li.length);
-			for(var i=0;i<slider_li.length;i++) {
-				slider_li[i].style.width = width+'px';
-				slider_li[i].style.left = -x+'%';
-			}
-			slider_li[0].style.left = '0%';
-			var count = 3;
-			setTimeout(timeout,slider_time);
-			function timeout(){
-				count++;
-				var left = 0;
-				slider_a(left,count);
-				clearTimeout(timeout);
-				setTimeout(timeout,slider_time);
-			}
-			function slider_a(left,count){
-				setTimeout(a,1);
-				function a() {
-					left += 1;
-					slider_li[count%4].style.left = left+'%';
-					slider_li[(count+1)%4].style.left = (left-x)+'%';
-					if(left === 100){
-						slider_li[(count)%4].style.left = -x+'%';
-						clearTimeout(a);
-						return false;
-					}
-					clearTimeout(a);
-					setTimeout(a,1);
-				}
-			}
-			function slider_b(left,count){
-				setTimeout(b,1);
-				function b() {
-					slider_li[(count+1)%4].style.left = x+'%';
-					left += 1;
-					slider_li[count%4].style.left = -left+'%';
-					slider_li[(count+1)%4].style.left = (x-left)+'%';
-					if(left === 100){
-						clearTimeout(b);
-						return false;
-					}
-					clearTimeout(b);
-					setTimeout(b,1);
-				}
-			}
+			slider('.slider',600,300,4000);
 		}
 	</script>
+	<script type="text/javascript" src="../common/js/fs.js"></script>
 </head>
 <body>
-	<div id="slider">
+	<div class="slider">
 		<ul>
 			<li><img src="img/1.jpg" alt=""></li>
 			<li><img src="img/2.jpg" alt=""></li>
 			<li><img src="img/3.jpg" alt=""></li>
 			<li><img src="img/4.jpg" alt=""></li>
 		</ul>
+		<input class="slider_next" type="button" value="下一张">
+		<input class="slider_prev" type="button" value="上一张">
 	</div>
 </body>
 </html>

@@ -70,3 +70,43 @@ function slider(id,width,height,time){
 		timer = setInterval(next, SLIDER_TIME);
 	}
 }
+
+
+function select(idName,className){
+	var select = document.querySelector(idName);
+	var select_list = select.querySelectorAll("option");
+	var length = select_list.length;
+	var div=document.createElement("div");
+	select.style.display = "none";
+	var span = '<span>'+select_list[select.selectedIndex].innerHTML+'</span>';
+	var select_li = "";
+	var simulate_name = className;
+	for(var i=0;i<length;i++) {
+		select_li = select_li+'<li>'+select_list[i].innerHTML+'</li>';
+	}
+	div.setAttribute("class",simulate_name);
+	div.innerHTML = span+'<ul>'+select_li+'</ul>';
+	select.parentNode.insertBefore(div,select);
+	span = div.querySelector("span");
+	var a = 1;
+	span.onclick = function(e){
+		if(a){
+			div.querySelector("ul").style.display="block";
+			a = 0;
+			e.stopPropagation();//不再派发事件，阻止冒泡
+		}
+	}
+	window.document.onclick = function(){
+		div.querySelector("ul").style.display="none";
+		a = 1;
+	}
+	select_li = div.querySelectorAll("li");
+	for(var i=0;i<length;i++){
+		(function(i){
+			select_li[i].onclick = function(){
+				div.querySelector("span").innerHTML=select_li[i].innerHTML;
+				select_list[i].selected='selected';
+			}
+		})(i);
+	}
+}
