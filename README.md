@@ -1,20 +1,20 @@
 # js_test
 每天进步一小步
 
-##countdown
+## countdown
 HTML5倒计时
 
-##nowTime
+## nowTime
 HTML5现在时间
 
-##select
+## select
 自定义select菜单
 
-##slider
+## slider
 轮播图
 
-##tinyFish
+## tinyFish
 HTML5小游戏
 
-##test
+## test
 一些js基础的小练习
