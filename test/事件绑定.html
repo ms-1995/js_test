@@ -1,0 +1,45 @@
+<!-- 事件绑定 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="list">
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+	</ul>
+	<div id="myDiv">
+		<button id="myBtn">点击</button>
+	</div>
+	<script>
+		//进行批量绑定
+		var list = document.querySelector('.list');
+		list.onclick = function(event){
+			switch(event.target.innerText){
+				case "111": alert('111');break;
+				case "222": alert('222');break;
+				case "333": alert('333');break;
+			}
+		}
+
+		
+		var btn = document.querySelector('#myBtn');
+		btn.onclick = function(){
+			btn.onclick = null;//移除事件
+			document.querySelector('#myDiv').innerHTML = "点击了";
+		}
+
+		//捕获发生点击事件的标签中的文字内容
+		document.body.onclick = function(event){
+			event.preventDefault();
+			if(event.target.localName==='p'||event.target.localName==='span'||event.target.localName==='li'){
+				console.log(event.target.innerText);
+			}
+
+		}
+	</script>
+</body>
+</html>
