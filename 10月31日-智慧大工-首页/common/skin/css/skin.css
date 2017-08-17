@@ -1,0 +1,124 @@
+.container {
+	background: url(../image/background.png);
+	/*background-color: rgba(224,244,224,0.5);*/
+	/*filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#7fe0e0e0, endColorstr = #7fe0e0e0 );*/
+}
+[class *="Ba1"] {
+	background-color: rgba(18,105,204,1);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#ff1269cc, endColorstr = #ff1269cc );
+}
+:root [class *="Ba1"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ba2"] {
+	background-color: rgba(18,105,204,0.7);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#bf1269cc, endColorstr = #bf1269cc );
+}
+:root [class *="Ba2"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ba3"] {
+	background-color: rgba(18,105,204,0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#991269cc, endColorstr = #991269cc );
+}
+:root [class *="Ba3"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ba4"] {
+	background-color: rgba(18,105,204,0.5);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#7f1269cc, endColorstr = #7f1269cc );
+}
+:root [class *="Ba4"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ba5"] {
+	background-color: rgba(18,105,204,0.4);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#661269cc, endColorstr = #661269cc );
+}
+:root [class *="Ba5"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ba6"] {
+	background-color: rgba(18,105,204,0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#3f1269cc, endColorstr = #3f1269cc );
+}
+:root [class *="Ba6"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ba7"] {
+	background-color: rgba(18,105,204,0.1);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#191269cc, endColorstr = #191269cc );
+}
+:root [class *="Ba7"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Bb1"] {
+	background-color: rgba(3,56,111,1);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#ff03386f, endColorstr = #ff03386f );
+}
+:root [class *="Bb1"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Bc1"] {
+	background-color: rgba(255,232,108,1);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#ffffe86c, endColorstr = #ffffe86c );
+}
+:root [class *="Bc1"]{
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Ra1"] {
+	border-color: #1269cc !important;
+}
+[class *="Ra2"] {
+	border-color: #c3d4e8 !important;
+}
+[class *="Ca1"] {
+	color: #1269cc !important;
+}
+[class *="Ca2"] {
+	color: #a5b6de !important;
+}
+[class *="Ca3"] {
+	color: #88b4e5 !important;
+}
+[class *="Ca4"] {
+	color: #c4d9f2 !important;
+}
+[class *="Ca5"] {
+	color: #a5c7f5 !important;
+}
+[class *="Ca6"] {
+	color: #6ca2df !important;
+}
+[class *="Ca7"] {
+	color: #5996db !important;
+}
+[class *="Cc1"] {
+	color: #ffe86c !important;
+}
+[class *="Cc2"] {
+	color: #ffed89 !important;
+}
+[class *="Cc3"] {
+	color: #fff1a7 !important;
+}
+[class *="Cd1"] {
+	color: #a77c21 !important;
+}
+[class *="Ha2"]:hover {
+	background-color: rgba(18,105,204,0.7);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#bf1269cc, endColorstr = #bf1269cc );
+}
+:root [class *="Ha2"]:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Hb1"]:hover {
+	background-color: rgba(255,255,255,0.15);
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#26ffffff, endColorstr = #26ffffff );
+}
+:root [class *="Hb1"]:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr =#00000000, endColorstr = #00000000 )\9;
+}
+[class *="Hc1"]:hover {
+	color: #009ae0!important;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>校园信息门户</title>
+  <link type="text/css" href="../css/style.css" rel="stylesheet"/>
+  <link type="text/css" href="../css/login.css" rel="stylesheet"/>
+  <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){ //页面加载完毕才执行
+            //=========设置参数==========
+            //图片统一高度：
+            // $('#b04').width()
+            var images_height = $('#b04').width()*0.49+'px';
+            //图片路径/链接(数组形式):
+            var images_url = [
+            '../image/1.jpg',
+            '../image/2.jpg',
+            '../image/3.jpg',
+            '../image/4.jpg'
+            ];
+            var images_count = images_url.length;
+            //console.log(images_count);
+
+            //创建节点
+            //图片列表节点
+            for(var j=0;j<images_count+1;j++){
+              $('.banner ul').append('<li></li>')
+            }
+            //载入图片
+            $('.banner ul li:last').append('<img src="'+images_url[0]+'" alt="" style="height:'+images_height+'">');
+            $.each(images_url,function(key,value){
+             $('.banner ul li').eq(key).append('<img src="'+value+'" alt="" style="height:'+images_height+'">');
+           });
+
+            $('.banner').css('height',images_height);
+
+            $('.banner ul').css('width',(images_count+1)*101+'%');
+
+            //=========================
+
+            var num = 0;
+            //获取窗口宽度
+            var window_width = $('.banner').width();
+            var window_height = window_width*0.49;
+            $(window).resize(function(){
+              window_width = $('.banner').width();
+              window_height = window_width*0.49;
+              $('.banner ul li').css({width:window_width});
+              $('.banner').css({height:window_height});
+              $('.banner ul li').css({height:window_height});
+              $('.banner ul li img').css({height:window_height});
+              clearInterval(timer);
+              nextPlay();
+              timer = setInterval(nextPlay,5000);
+            });
+            //console.log(window_width);
+            $('.banner ul li').width(window_width);
+            $('.banner ul li').height(window_height);
+            $('.banner ul li img').height(window_height);
+            //自动播放
+            var timer = null;
+            function prevPlay(){
+              num--;
+              if(num<0){
+                    //悄悄把图片跳到最后一张图(复制页,与第一张图相同),然后做出图片播放动画，left参数是定位而不是移动的长度
+                    $('.banner ul').css({left:-window_width*images_count}).stop().animate({left:-window_width*(images_count-1)},500);
+                    num=images_count-1;
+                  }else{
+                    //console.log(num);
+                    $('.banner ul').stop().animate({left:-num*window_width},500);
+                  }
+                }
+                function nextPlay(){
+                  num++;
+                  if(num>images_count){
+                    //播放到最后一张(复制页)后,悄悄地把图片跳到第一张,因为和第一张相同,所以难以发觉,
+                    $('.banner ul').css({left:0}).stop().animate({left:-window_width},500);
+                    //css({left:0})是直接悄悄改变位置，animate({left:-window_width},500)是做出移动动画
+                    //随后要把指针指向第二张图片,表示已经播放至第二张了。
+                    num=1;
+                  }else{
+                    //在最后面加入一张和第一张相同的图片，如果播放到最后一张，继续往下播，悄悄回到第一张(肉眼看不见)，从第一张播放到第二张
+                    //console.log(num);
+                    $('.banner ul').stop().animate({left:-num*window_width},500);
+                  }
+                }
+                timer = setInterval(nextPlay,5000);
+                $('.banner').mouseenter(function(){
+                  clearInterval(timer);
+                }).mouseleave(function(){
+                  timer = setInterval(nextPlay,5000);
+                });
+            //播放下一张
+            $('.focus-navigation.next').click(function(){
+              nextPlay();
+            });
+            //返回上一张
+            $('.focus-navigation.prev').click(function(){
+              prevPlay();
+            });
+          });
+        </script>
+      </head>
+      <body>
+        <div style="position:relative; width:100%; min-width:1400px;">
+          <div id="datu">
+            <div class="inner">
+              <div class="focus focus-box banner" id="b04" style="width: 100%;">
+                <ul class="focus-container" style="width: 100%;">
+
+                </ul>
+                <a class="focus-navigation prev"><</a>
+                <a class="focus-navigation next">></a>
+              </div>
+            </div>
+          </div>
+          <div id="header-1" class="wrapper" style="position:absolute; left:0px; top:0px; z-index:1000;">
+            <div class="inner">
+              <div class="header-1-l">
+                <span>欢迎进入安徽大学门户网！</span>
+              </div>
+              <div class="header-1-r">
+                <ul class="wp_nav">
+                  <li class="nav-item i1">
+                    <a href="" title="电子邮件"><span class="item-name">电子邮件</span></a>
+                    <i class="mark" style="opacity: 1;"></i>
+                  </li>
+                  <li class="nav-item i2">
+                    <a href="" title="设为主页"><span class="item-name">设为主页</span></a>
+                    <i class="mark" style="opacity: 1;"></i>
+                  </li>
+                  <li class="nav-item i3">
+                    <a href="" title="加入收藏"><span class="item-name">加入收藏</span></a>
+                    <i class="mark" style="opacity: 1;"></i>
+                  </li>
+                  <li class="nav-item i4">
+                    <a href="" title="登录帮助"><span class="item-name">登录帮助</span></a>
+                    <i class="mark" style="opacity: 1;"></i>
+                  </li>
+                </ul>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div id="header" class="wrapper" style="position:absolute; left:0px; top:52px; z-index:0;">
+            <div class="inner">
+              <div class="head-r"></div>
+            </div>
+          </div>
+          <div id="container-2" class="wrapper" style="position:absolute; left:0px; top:264px; z-index:0;">
+            <div class="inner">
+              <div class="container-2-l">
+                <form action="" class="login-form" name="login">
+                  <ul class="landing_row_list">
+                    <li class="landing_row_01">
+                      <input class="login_input" name="username" type="text" style="color: rgb(153, 153, 153);">
+                    </li>
+                    <li class="landing_row_01">
+                      <input class="login_input" name="password" type="password">
+                    </li>
+                    <li class="landing_row_01">
+                      <input class="button landing_input_btn" name="log_in" type="submit" value="">
+                      <a class="logon_link" href="">忘记密码？</a>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+              <div class="container-2-r">
+                <div class="container-2-r-1">
+                  <div class="articlecontent"><img src="../image/QRcode.png" src="" alt=""></div>
+                </div>
+                <div class="container-2-r-2"><span>扫描二维码登录</span></div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div id="container-1" class="wrapper" style="position:absolute; left:0px; bottom:48px;">
+            <div class="inner">
+              <div class="post">
+                <div class="tt">
+                  <h3 class="tit"><span class="title">通知公告</span></h3>
+                </div>
+                <div class="con">
+                  <ul class="zdy-1 clearfix">
+                    <li class="news n1 clearfix">
+                      <div class="sj">12-31</div>
+                      <div class="bt"><a title="关于新版学校主页启用的通知" href="">关于新版学校主页启用的通知</a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="footer" class="wrapper" style="position:absolute; left:0px; bottom:0px;">
+            <div class="inner">
+              <div class="foot-l">
+                <div id="sudy-links-w9" class="sudy-links" style="display: block; position: relative;">
+                  <span class="links-name" style="display: block;">业务系统连接</span>
+                  <div class="links-wrap" style="width: 171px;">
+                    <ul class="wp_article_list">
+                      <li class="list_item i1"><span class="Article_Title"><a href="">更多系统连接</a></span></li>
+                      <li class="list_item i2"><span class="Article_Title"><a href="">电子邮件系统</a></span></li>
+                      <li class="list_item i3"><span class="Article_Title"><a href="">教务管理系统</a></span></li>
+                      <li class="list_item i4"><span class="Article_Title"><a href="">低值耐用品查询</a></span></li>
+                      <li class="list_item i5"><span class="Article_Title"><a href="">仪器设备</a></span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="foot-r"><span>Copyright 2015 安徽大学 All Rights Reserved </span></div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+      </body>
