@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <script>
+    var list = document.querySelectorAll('li');
+
+    function forEa(list, callback) {
+      for (var i = 0; i < list.length; i++) {
+        callback.call(list[i], i)
+      }
+    }
+    forEa(list, function(x) {
+      this.onclick = function() {
+        console.log(this.innerText + ' ' + x)
+      }
+    })
+  </script>
+</body>
+
+</html>
